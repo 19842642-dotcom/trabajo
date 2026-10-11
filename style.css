@@ -586,3 +586,37 @@ nav.navbar img.logo {
     object-fit: contain !important;
     flex-shrink: 0 !important;
 }
+
+/* MODO OSCURO - MINUTA FRESH */
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.modo-oscuro {
+    background-color: #25281F !important;
+    color: #F1EBDD !important;
+}
+
+body.modo-oscuro .navbar {
+    background-color: #343A2B !important;
+}
+
+body.modo-oscuro .navbar a,
+body.modo-oscuro .navbar .navbar-brand {
+    color: #F1EBDD !important;
+}
+
+body.modo-oscuro .card,
+body.modo-oscuro .container .bg-light {
+    background-color: #343A2B !important;
+    color: #F1EBDD !important;
+}
+
+body.modo-oscuro p,
+body.modo-oscuro h1,
+body.modo-oscuro h2,
+body.modo-oscuro h3,
+body.modo-oscuro label {
+    color: #F1EBDD;
+}
