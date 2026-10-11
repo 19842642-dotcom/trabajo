@@ -1,109 +1,152 @@
-```javascript
-// ==========================================
-// EJEMPLO DE JAVASCRIPT
-// ==========================================
+document.addEventListener("DOMContentLoaded", function () {
 
-function mostrarEjemploJS() {
+    const botonTema = document.getElementById("themeToggle");
 
-    alert("¡Elegiste una deliciosa minuta de fresa! 🍓");
+    if (!botonTema) return;
 
-}
+    const icono = botonTema.querySelector("i");
 
+    // Revisar si anteriormente se eligió modo oscuro
+    const temaGuardado = localStorage.getItem("tema");
 
-// ==========================================
-// CUESTIONARIO
-// ==========================================
+    if (temaGuardado === "oscuro") {
+        document.body.classList.add("modo-oscuro");
 
-function calificarQuiz() {
-
-    let respuestas = {
-
-        p1: "b",
-        p2: "a",
-        p3: "b",
-        p4: "a",
-        p5: "a",
-        p6: "b",
-        p7: "a",
-        p8: "b",
-        p9: "a",
-        p10: "a"
-
-    };
+        icono.classList.remove("fa-moon");
+        icono.classList.add("fa-sun");
+    }
 
 
-    let puntos = 0;
+    // Cambiar entre claro y oscuro
+    botonTema.addEventListener("click", function () {
+
+        document.body.classList.toggle("modo-oscuro");
 
 
-    for (let pregunta in respuestas) {
+        if (document.body.classList.contains("modo-oscuro")) {
 
-        let seleccionada =
-            document.querySelector(
-                'input[name="' + pregunta + '"]:checked'
-            );
+            localStorage.setItem("tema", "oscuro");
 
+            icono.classList.remove("fa-moon");
+            icono.classList.add("fa-sun");
 
-        if (seleccionada) {
+        } else {
 
-            if (seleccionada.value === respuestas[pregunta]) {
+            localStorage.setItem("tema", "claro");
 
-                puntos++;
-
-            }
+            icono.classList.remove("fa-sun");
+            icono.classList.add("fa-moon");
 
         }
 
+    });
+
+});
+
+
+// Mensaje de los productos
+function mostrarMensaje(producto) {
+
+    alert(
+        "Has seleccionado: " + producto +
+        "\n\nGracias por visitar Minuta Fresh."
+    );
+    // CONECTAR MINUTA FRESH CON DISCORD
+
+const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1557746325364412486/hARqnbRxguhCotdpoTwd-Bpl9jXsKJjSdO4-34EN4Uzc9uxhPg5MJxq_qhLmRI_0Gm2z";
+
+async function enviarADiscord(nombre, email, mensaje) {
+    try {
+        const respuesta = await fetch(DISCORD_WEBHOOK_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                embeds: [{
+                    title: "📩 Nuevo mensaje de Minuta Fresh",
+                    fields: [
+                        { name: "Nombre", value: nombre },
+                        { name: "Correo", value: email },
+                        { name: "Mensaje", value: mensaje }
+                    ],
+                    color: 6716746
+                }]
+            })
+        });
+
+        if (!respuesta.ok) {
+            throw new Error("No se pudo enviar el mensaje");
+        }
+
+        alert("¡Mensaje enviado a Discord correctamente!");
+
+    } catch (error) {
+        alert("Error al enviar el mensaje a Discord.");
+        console.error(error);
     }
+}
 
+/* CONECTAR FORMULARIO CON DISCORD */
 
-    let resultado = document.getElementById("resultado");
+const formularioContacto = document.getElementById("contactForm");
 
+if (formularioContacto) {
+    formularioContacto.addEventListener("submit", async function (evento) {
+        evento.preventDefault();
 
-    let porcentaje = (puntos / 10) * 100;
+        const resultado = document.getElementById("contactResult");
+        const boton = formularioContacto.querySelector('button[type="submit"]');
 
+        resultado.style.display = "block";
+        resultado.className = "alert alert-info mt-4";
+        resultado.textContent = "Enviando mensaje...";
 
-    if (puntos >= 8) {
+        boton.disabled = true;
 
-        resultado.innerHTML =
-            "🎉 Excelente trabajo. Obtuviste " +
-            puntos +
-            " de 10 respuestas correctas (" +
-            porcentaje +
-            "%).";
+        try {
+            const nombre = document.getElementById("nombre").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const mensaje = document.getElementById("mensaje").value.trim();
 
-        resultado.style.background = "#4ECDC4";
-        resultado.style.color = "white";
+const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1557746325364412486/hARqnbRxguhCotdpoTwd-Bpl9jXsKJjSdO4-34EN4Uzc9uxhPg5MJxq_qhLmRI_0Gm2z";
+            const respuesta = await fetch("", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: "Minuta Fresh",
+                    embeds: [{
+                        title: "📩 Nuevo mensaje de contacto",
+                        color: 6716746,
+                        fields: [
+                            { name: "Nombre", value: nombre },
+                            { name: "Correo electrónico", value: email },
+                            { name: "Mensaje", value: mensaje }
+                        ]
+                    }]
+                })
+            });
 
-    }
+            if (!respuesta.ok) {
+                throw new Error("Discord respondió con un error.");
+            }
 
-    else if (puntos >= 5) {
+            resultado.className = "alert alert-success mt-4";
+            resultado.textContent = "¡Mensaje enviado correctamente a Discord!";
+            formularioContacto.reset();
 
-        resultado.innerHTML =
-            "👍 Buen trabajo. Obtuviste " +
-            puntos +
-            " de 10 respuestas correctas (" +
-            porcentaje +
-            "%).";
+        } catch (error) {
+            console.error("Error al enviar:", error);
 
-        resultado.style.background = "#FFE66D";
-        resultado.style.color = "#333";
-
-    }
-
-    else {
-
-        resultado.innerHTML =
-            "📚 Puedes repasar nuevamente las páginas informativas. " +
-            "Obtuviste " +
-            puntos +
-            " de 10 respuestas correctas (" +
-            porcentaje +
-            "%).";
-
-        resultado.style.background = "#FF6B6B";
-        resultado.style.color = "white";
-
-    }
+            resultado.className = "alert alert-danger mt-4";
+            resultado.textContent =
+                "No se pudo enviar el mensaje. Revisa la URL del webhook y tu conexión.";
+        } finally {
+            boton.disabled = false;
+        }
+    });
+}
 
 }
-```
