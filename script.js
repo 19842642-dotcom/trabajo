@@ -149,4 +149,42 @@ const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/155774632536441248
     });
 }
 
+/* ==========================================
+   MODO CLARO Y OSCURO - MINUTA FRESH
+========================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+    const botonTema = document.getElementById("themeToggle");
+
+    if (!botonTema) {
+        return;
+    }
+
+    const icono = botonTema.querySelector("i");
+
+    function aplicarTema(oscuro) {
+        document.body.classList.toggle("modo-oscuro", oscuro);
+
+        if (icono) {
+            icono.classList.toggle("fa-moon", !oscuro);
+            icono.classList.toggle("fa-sun", oscuro);
+        }
+    }
+
+    const temaGuardado = localStorage.getItem("tema");
+    aplicarTema(temaGuardado === "oscuro");
+
+    botonTema.addEventListener("click", function () {
+        const activarOscuro =
+            !document.body.classList.contains("modo-oscuro");
+
+        aplicarTema(activarOscuro);
+
+        localStorage.setItem(
+            "tema",
+            activarOscuro ? "oscuro" : "claro"
+        );
+    });
+});
+
 }
