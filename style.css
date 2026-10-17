@@ -1,12 +1,16 @@
-
+/* ==========================================
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL
+========================================== */
 :root {
     --verde-oscuro: #4D5638;
-    --verde-salvia: #707A4E;
+    --verde-salvia: #697451;
+    --verde-suave: #87916D;
     --verde-claro: #929B70;
-    --beige: #eedabb;
-    --crema: #F5EBD8;
+    --beige: #F1F0ED;
+    --beige-calido: #EEDABB;
+    --crema: #F8F1E3;
     --blanco: #FFFDF7;
-    --texto: #3D432E;
+    --texto: #373D29;
 }
 
 * {
@@ -20,28 +24,41 @@ html {
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-    background: var(--beige);
+    background-color: var(--beige);
     color: var(--texto);
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-h1, h2, h3, h4 {
+/* Tipografías base */
+h1, h2, h3, h4, h5 {
     font-family: "Playfair Display", serif;
+    color: var(--verde-oscuro);
 }
 
 p {
     line-height: 1.8;
 }
 
-/* NAVBAR */
+a {
+    color: var(--verde-oscuro);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--verde-salvia);
+}
+
+/* ==========================================
+   2. BARRA DE NAVEGACIÓN (NAVBAR)
+========================================== */
 .navbar {
-    background: rgba(77, 86, 56, 0.97);
+    background-color: var(--verde-oscuro) !important;
     border-bottom: 1px solid rgba(231, 201, 154, 0.4);
     padding: 10px 0;
 }
 
 .navbar-brand {
-    color: white !important;
+    color: var(--crema) !important;
     font-family: "Playfair Display", serif;
     font-size: 1.4rem;
     display: inline-flex;
@@ -51,10 +68,9 @@ p {
 }
 
 .navbar-brand strong {
-    color: var(--beige);
+    color: var(--beige-calido);
 }
 
-/* LOGO CORREGIDO */
 .navbar-brand img,
 .navbar-brand .logo-img,
 .navbar-brand .logo {
@@ -62,44 +78,147 @@ p {
     height: 45px !important;
     min-width: 45px;
     min-height: 45px;
-    max-width: 45px !important;
-    max-height: 45px !important;
     object-fit: contain !important;
     display: inline-block;
     flex-shrink: 0;
     border-radius: 50%;
-    border: 2px solid var(--beige);
+    border: 2px solid var(--beige-calido);
 }
 
 .nav-link {
-    color: #F5EBD8 !important;
+    color: var(--crema) !important;
     font-size: 0.9rem;
     margin-left: 5px;
-    transition: 0.3s;
+    transition: color 0.3s ease;
 }
 
 .nav-link:hover,
+.nav-link:focus,
 .nav-link.active {
-    color: var(--beige) !important;
+    color: var(--beige-calido) !important;
 }
 
-/* BOTÓN MODO */
-.theme-btn {
+/* ==========================================
+   3. BOTONES Y COMPONENTES
+========================================== */
+.btn-primary,
+.btn-success,
+.btn-minuta {
+    display: inline-block;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px;
+    background-color: var(--verde-oscuro);
+    color: var(--crema);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-success:hover,
+.btn-minuta:hover {
+    background-color: var(--verde-salvia);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.btn-outline-success,
+.btn-outline-minuta {
+    display: inline-block;
+    border: 2px solid var(--verde-oscuro);
+    border-radius: 30px;
+    padding: 10px 23px;
+    color: var(--verde-oscuro);
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-success:hover,
+.btn-outline-minuta:hover {
+    background-color: var(--verde-oscuro);
+    color: #FFFFFF;
+}
+
+/* Botón Modo Claro / Oscuro y Botón de Música (Circulares) */
+.theme-btn,
+.music-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
     width: 42px;
     height: 42px;
+    margin: 5px;
+    padding: 0;
+    border: 1px solid #858F6B;
     border-radius: 50%;
-    border: none;
-    background: var(--beige);
+    background: var(--beige-calido);
     color: var(--verde-oscuro);
+    font-size: 18px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    z-index: 1000;
 }
 
-.theme-btn:hover {
-    transform: rotate(20deg) scale(1.05);
+.theme-btn:hover,
+.music-btn:hover {
+    background: var(--verde-salvia);
+    color: #FFFFFF;
+    transform: scale(1.08);
 }
 
-/* PORTADA */
+/* Efecto animado cuando la música está sonando */
+.music-btn.playing {
+    background-color: var(--verde-salvia) !important;
+    color: #FFFFFF !important;
+    animation: pulsoMusica 1.6s infinite ease-in-out;
+}
+
+@keyframes pulsoMusica {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(238, 218, 187, 0.6); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(238, 218, 187, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(238, 218, 187, 0); }
+}
+
+.theme-btn i,
+.music-btn i {
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Botón de Idioma (Píldora Beige) */
+.language-btn {
+    background-color: var(--beige-calido);
+    color: var(--verde-oscuro);
+    border: 1px solid #858F6B;
+    border-radius: 25px;
+    padding: 8px 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.language-btn:hover {
+    background-color: var(--verde-salvia);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.language-btn i {
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   4. SECCIONES Y CONTENEDORES
+========================================== */
 .hero {
     min-height: 80vh;
     display: flex;
@@ -115,7 +234,6 @@ p {
 
 .hero h1 {
     font-size: clamp(3rem, 7vw, 5.5rem);
-    color: var(--verde-oscuro);
     margin-top: 15px;
 }
 
@@ -129,9 +247,13 @@ p {
 }
 
 .hero-product {
+    width: 100%;
+    max-width: 535px;
+    margin-left: auto;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 248, 235, 0.45);
     border-radius: 30px;
+    overflow: hidden;
 }
 
 .hero-product img {
@@ -141,41 +263,35 @@ p {
     border-radius: 25px;
 }
 
-/* BOTONES */
-.btn-minuta {
-    display: inline-block;
-    border: none;
-    border-radius: 30px;
-    padding: 12px 25px;
-    background: var(--verde-oscuro);
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.3s;
+#carruselPrincipal {
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
 }
 
-.btn-minuta:hover {
-    background: var(--verde-salvia);
-    color: white;
-    transform: translateY(-2px);
+#carruselPrincipal .carousel-inner {
+    border-radius: 24px;
 }
 
-.btn-outline-minuta {
-    display: inline-block;
-    border: 2px solid var(--verde-oscuro);
-    border-radius: 30px;
-    padding: 10px 23px;
-    color: var(--verde-oscuro);
-    text-decoration: none;
-    transition: 0.3s;
+#carruselPrincipal .carousel-item img {
+    display: block;
+    width: 100%;
+    height: 490px;
+    object-fit: cover;
+    border-radius: 24px;
 }
 
-.btn-outline-minuta:hover {
-    background: var(--verde-oscuro);
-    color: white;
+#carruselPrincipal .carousel-control-prev,
+#carruselPrincipal .carousel-control-next {
+    width: 12%;
+    opacity: 0.8;
 }
 
-/* TÍTULOS */
+#carruselPrincipal .carousel-control-prev:hover,
+#carruselPrincipal .carousel-control-next:hover {
+    opacity: 1;
+}
+
 .section-title {
     text-align: center;
     margin-bottom: 45px;
@@ -188,19 +304,18 @@ p {
 }
 
 .section-title h2 {
-    color: var(--verde-oscuro);
     font-size: 2.5rem;
     margin-top: 8px;
 }
 
-/* TARJETAS */
+.card,
 .minuta-card {
-    background: var(--crema);
+    background-color: var(--crema);
     border-radius: 20px;
     overflow: hidden;
     height: 100%;
     border: 1px solid rgba(77, 86, 56, 0.15);
-    transition: 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .minuta-card:hover {
@@ -217,10 +332,6 @@ p {
     padding: 25px;
 }
 
-.minuta-card-body h3 {
-    color: var(--verde-oscuro);
-}
-
 .card-bottom {
     display: flex;
     justify-content: space-between;
@@ -234,17 +345,12 @@ p {
     color: var(--verde-oscuro);
 }
 
-/* INFORMACIÓN */
 .info-box {
     background: rgba(245, 235, 216, 0.8);
     border: 1px solid rgba(77, 86, 56, 0.15);
     border-radius: 20px;
     padding: 25px;
     height: 100%;
-}
-
-.info-box h3 {
-    color: var(--verde-oscuro);
 }
 
 .color-circle {
@@ -254,20 +360,10 @@ p {
     margin: 0 auto 20px;
 }
 
-.verde-oscuro {
-    background: #4D5638;
-}
+.verde-oscuro { background: #4D5638; }
+.verde-salvia { background: #707A4E; }
+.beige { background: #E7C99A; border: 1px solid #c4a878; }
 
-.verde-salvia {
-    background: #707A4E;
-}
-
-.beige {
-    background: #E7C99A;
-    border: 1px solid #c4a878;
-}
-
-/* TECNOLOGÍAS */
 .tech-card {
     display: block;
     height: 100%;
@@ -277,7 +373,7 @@ p {
     color: var(--texto);
     text-decoration: none;
     border: 1px solid rgba(77, 86, 56, 0.15);
-    transition: 0.3s;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .tech-card:hover {
@@ -291,11 +387,6 @@ p {
     margin-bottom: 15px;
 }
 
-.tech-card h3 {
-    color: var(--verde-oscuro);
-}
-
-/* PÁGINAS INFORMATIVAS */
 .page-header {
     text-align: center;
     padding: 75px 20px;
@@ -303,7 +394,6 @@ p {
 }
 
 .page-header h1 {
-    color: var(--verde-oscuro);
     font-size: 3rem;
 }
 
@@ -312,7 +402,6 @@ p {
 }
 
 .content-section h2 {
-    color: var(--verde-oscuro);
     margin-top: 35px;
     margin-bottom: 15px;
 }
@@ -321,7 +410,6 @@ p {
     margin-bottom: 10px;
 }
 
-/* TABLAS */
 .table-minuta,
 .table {
     border-color: rgba(77, 86, 56, 0.3);
@@ -336,7 +424,6 @@ p {
     background: var(--crema);
 }
 
-/* BLOQUES DE CÓDIGO */
 .code-box {
     background: #272B20;
     color: #E7C99A;
@@ -346,18 +433,12 @@ p {
     margin: 20px 0;
 }
 
-/* CUESTIONARIO */
 .question {
     background: var(--crema);
     padding: 25px;
     margin-bottom: 25px;
     border-radius: 20px;
     border: 1px solid rgba(77, 86, 56, 0.15);
-}
-
-.question h4 {
-    color: var(--verde-oscuro);
-    margin-bottom: 20px;
 }
 
 .question label {
@@ -375,7 +456,6 @@ p {
     margin-right: 8px;
 }
 
-/* CONTACTO */
 .contact-card {
     background: var(--crema);
     padding: 40px;
@@ -395,59 +475,72 @@ p {
 }
 
 .form-control {
-    border: 1px solid #B8A77D;
+    border: 1px solid var(--verde-suave);
     border-radius: 12px;
     padding: 12px;
 }
 
 .form-control:focus {
     border-color: var(--verde-salvia);
-    box-shadow: 0 0 0 0.2rem rgba(112, 122, 78, 0.15);
+    box-shadow: 0 0 0 0.2rem rgba(105, 116, 81, 0.2);
 }
 
-/* PIE DE PÁGINA */
+footer,
 .footer {
-    background: var(--verde-oscuro);
-    color: var(--beige);
+    background-color: var(--verde-oscuro);
+    color: var(--crema);
     padding: 25px;
     margin-top: 50px;
 }
 
-/* MODO OSCURO */
+footer a {
+    color: var(--beige);
+}
+
+/* ==========================================
+   5. MODO OSCURO
+========================================== */
 body.modo-oscuro {
     background: #25291E !important;
     color: #F1EBDD !important;
 }
 
 body.modo-oscuro .navbar {
-    background: #303524 !important;
+    background: #343A2B !important;
 }
 
-body.modo-oscuro .navbar-brand {
+body.modo-oscuro .navbar-brand,
+body.modo-oscuro .navbar a {
     color: #F1EBDD !important;
 }
 
-body.modo-oscuro .navbar-brand strong {
-    color: #E7C99A !important;
-}
-
-body.modo-oscuro .nav-link {
+body.modo-oscuro .navbar-brand strong,
+body.modo-oscuro .nav-link,
+body.modo-oscuro .hero h1,
+body.modo-oscuro .section-title h2,
+body.modo-oscuro .content-section h2,
+body.modo-oscuro .minuta-card-body h3,
+body.modo-oscuro .info-box h3,
+body.modo-oscuro .tech-card h3,
+body.modo-oscuro .question h4,
+body.modo-oscuro .precio,
+body.modo-oscuro .page-header h1,
+body.modo-oscuro .form-label {
     color: #E7C99A !important;
 }
 
 body.modo-oscuro .nav-link:hover,
 body.modo-oscuro .nav-link.active {
-    color: white !important;
-}
-
-body.modo-oscuro .hero h1,
-body.modo-oscuro .section-title h2,
-body.modo-oscuro .content-section h2 {
-    color: #E7C99A !important;
+    color: #FFFFFF !important;
 }
 
 body.modo-oscuro .hero h1 span {
     color: #AAB68A !important;
+}
+
+body.modo-oscuro .hero h2,
+body.modo-oscuro .eyebrow {
+    color: #F1EBDD !important;
 }
 
 body.modo-oscuro .hero-product {
@@ -459,17 +552,12 @@ body.modo-oscuro .minuta-card-body,
 body.modo-oscuro .info-box,
 body.modo-oscuro .tech-card,
 body.modo-oscuro .question,
-body.modo-oscuro .contact-card {
+body.modo-oscuro .contact-card,
+body.modo-oscuro .card,
+body.modo-oscuro .container .bg-light {
     background: #343A28 !important;
     color: #F1EBDD !important;
     border-color: #555D3E !important;
-}
-
-body.modo-oscuro .minuta-card-body h3,
-body.modo-oscuro .info-box h3,
-body.modo-oscuro .tech-card h3,
-body.modo-oscuro .question h4 {
-    color: #E7C99A !important;
 }
 
 body.modo-oscuro p,
@@ -481,10 +569,6 @@ body.modo-oscuro .page-header {
     background: #303524 !important;
 }
 
-body.modo-oscuro .page-header h1 {
-    color: #E7C99A !important;
-}
-
 body.modo-oscuro .table td {
     background: #343A28 !important;
     color: #F1EBDD !important;
@@ -492,10 +576,7 @@ body.modo-oscuro .table td {
 
 body.modo-oscuro .table th {
     background: #4D5638 !important;
-}
-
-body.modo-oscuro .form-label {
-    color: #E7C99A !important;
+    color: #FFFFFF !important;
 }
 
 body.modo-oscuro .form-control {
@@ -508,30 +589,38 @@ body.modo-oscuro .form-control::placeholder {
     color: #AAA993;
 }
 
-body.modo-oscuro .footer {
+body.modo-oscuro .footer,
+body.modo-oscuro footer {
     background: #171A13;
 }
 
-body.modo-oscuro .btn-outline-minuta {
+body.modo-oscuro .btn-outline-minuta,
+body.modo-oscuro .btn-outline-success {
     border-color: #E7C99A;
     color: #E7C99A;
 }
 
-body.modo-oscuro .btn-outline-minuta:hover {
+body.modo-oscuro .btn-outline-minuta:hover,
+body.modo-oscuro .btn-outline-success:hover {
     background: #E7C99A;
     color: #25291E;
 }
 
-body.modo-oscuro .theme-btn {
-    background: #E7C99A;
-    color: #25291E;
+body.modo-oscuro .theme-btn,
+body.modo-oscuro .music-btn {
+    background: #E7C99A !important;
+    color: #25291E !important;
 }
 
-body.modo-oscuro .precio {
-    color: #E7C99A;
+body.modo-oscuro .language-btn {
+    background-color: #E7C99A !important;
+    color: #25291E !important;
+    border-color: #87916D !important;
 }
 
-/* DISEÑO ADAPTABLE */
+/* ==========================================
+   6. DISEÑO ADAPTABLE (RESPONSIVE)
+========================================== */
 @media (max-width: 991px) {
     .navbar-nav {
         padding-top: 15px;
@@ -539,6 +628,15 @@ body.modo-oscuro .precio {
 
     .nav-link {
         padding: 10px;
+    }
+
+    .hero-product {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    #carruselPrincipal .carousel-item img {
+        height: 400px;
     }
 }
 
@@ -570,53 +668,21 @@ body.modo-oscuro .precio {
         height: 40px !important;
         min-width: 40px;
         min-height: 40px;
-        max-width: 40px !important;
-        max-height: 40px !important;
     }
 }
 
-/* REFUERZO DEL TAMAÑO DEL LOGO */
-nav.navbar .navbar-brand img,
-nav.navbar img.logo-img,
-nav.navbar img.logo {
-    width: 45px !important;
-    height: 45px !important;
-    max-width: 45px !important;
-    max-height: 45px !important;
-    object-fit: contain !important;
-    flex-shrink: 0 !important;
-}
+@media (max-width: 576px) {
+    .hero-product {
+        padding: 12px;
+        border-radius: 22px;
+    }
 
-/* MODO OSCURO - MINUTA FRESH */
+    #carruselPrincipal .carousel-item img {
+        height: 300px;
+    }
 
-body {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.modo-oscuro {
-    background-color: #25281F !important;
-    color: #F1EBDD !important;
-}
-
-body.modo-oscuro .navbar {
-    background-color: #343A2B !important;
-}
-
-body.modo-oscuro .navbar a,
-body.modo-oscuro .navbar .navbar-brand {
-    color: #F1EBDD !important;
-}
-
-body.modo-oscuro .card,
-body.modo-oscuro .container .bg-light {
-    background-color: #343A2B !important;
-    color: #F1EBDD !important;
-}
-
-body.modo-oscuro p,
-body.modo-oscuro h1,
-body.modo-oscuro h2,
-body.modo-oscuro h3,
-body.modo-oscuro label {
-    color: #F1EBDD;
+    .language-btn {
+        padding: 7px 12px;
+        margin: 5px;
+    }
 }
