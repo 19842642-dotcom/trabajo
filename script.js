@@ -490,11 +490,34 @@ function toggleLanguage() {
     actualizarEstadoPedido();
 }
 
-// Inicialización de eventos al cargar
+// Inicialización de eventos al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
+    // Evento selector de idioma
     const langBtn = document.getElementById('langToggle');
     if (langBtn) {
         langBtn.addEventListener('click', toggleLanguage);
     }
+
+    // Reproductor de música de fondo
+    const musicBtn = document.getElementById('musicToggle');
+    const bgMusic = document.getElementById('bgMusic');
+
+    if (musicBtn && bgMusic) {
+        musicBtn.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play()
+                    .then(() => {
+                        musicBtn.classList.add('playing');
+                    })
+                    .catch(error => {
+                        console.log('Error al reproducir audio:', error);
+                    });
+            } else {
+                bgMusic.pause();
+                musicBtn.classList.remove('playing');
+            }
+        });
+    }
+
     actualizarEstadoPedido();
 });
