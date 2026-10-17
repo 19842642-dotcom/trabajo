@@ -22,13 +22,12 @@ let pedido = {
     uva: 0,
     coco: 0,
     arrayan: 0,
-    promo: null // Guarda la especialidad elegida gratis si califica
+    promo: null
 };
 
 // Diccionario de Traducciones
 const translations = {
     es: {
-        // Navegación
         nav_inicio: "Inicio",
         nav_js: "JavaScript",
         nav_jquery: "jQuery",
@@ -36,8 +35,6 @@ const translations = {
         nav_hosting: "Hosting",
         nav_cuestionario: "Cuestionario",
         nav_contacto: "Contacto",
-
-        // Hero
         eyebrow: "SABOR · FRESCURA · TRADICIÓN",
         hero_h2: "El sabor que refresca tu día.",
         hero_p1: "Minuta Fresh es una propuesta de minutas de hielo con sabores frutales, pensada para jóvenes y familias que buscan una opción refrescante, deliciosa y accesible.",
@@ -45,14 +42,10 @@ const translations = {
         hero_propuesta_txt: "ofrecer diferentes sabores, una presentación atractiva y precios accesibles.",
         btn_ver_sabores: "Ver sabores",
         btn_contacto: "Contactarnos",
-
-        // Sección Sabores
         sabores_small: "NUESTROS SABORES",
         sabores_title: "Minutas favoritas",
         sabores_subtitle: "Conoce algunas de las opciones de Minuta Fresh.",
         btn_elegir: "Elegir",
-
-        // 9 Sabores de Minutas (Nombres)
         fresa_title: "Fresa",
         fresa_desc: "Una combinación refrescante con sabor dulce a fresa.",
         mango_title: "Mango",
@@ -71,8 +64,6 @@ const translations = {
         coco_desc: "Cremoso sabor a coco playero, suave e ideal para los días calurosos.",
         arrayan_title: "Arrayán",
         arrayan_desc: "Sabor 100% tradicional con el toque agridulce único del arrayán.",
-
-        // Sección Super Promo
         promo_small: "SUPER PROMO",
         promo_title: "¡Lleva más y disfruta más!",
         promo_subtitle: "Compra cuatro minutas de vaso y llévate una de nuestras especialidades en plato.",
@@ -87,8 +78,6 @@ const translations = {
         promo_frutas_desc: "Deliciosa selección de frutas frescas para acompañar tu orden.",
         promo_churro_title: "Minuta de Limón con Churro",
         promo_churro_desc: "El toque tradicional único con el clásico churrito salvadoreño.",
-
-        // Control del Pedido
         resumen_titulo: "Tu Pedido:",
         btn_ver_pedido: "Ver Pedido",
         modal_resumen_titulo: "Resumen de tu Pedido",
@@ -100,8 +89,6 @@ const translations = {
         modal_btn_aceptar: "Aceptar",
         msj_sin_items: "No has agregado minutas a tu pedido.",
         msj_falta_promo: "¡Atención! Has pedido 4 o más minutas. No olvides seleccionar tu especialidad gratis en la sección Super Promo.",
-
-        // Paleta de Colores
         identidad_small: "IDENTIDAD DE MARCA",
         identidad_title: "Nuestra paleta",
         verde_title: "Verde olivo",
@@ -110,20 +97,15 @@ const translations = {
         salvia_desc: "Aporta tranquilidad y frescura.",
         beige_title: "Beige",
         beige_desc: "Aporta calidez y un estilo artesanal.",
-
-        // Investigación / Tecnologías
         investigacion_small: "INVESTIGACIÓN",
         investigacion_title: "Tecnologías utilizadas",
         js_desc: "Comportamiento e interacción.",
         jquery_desc: "Librería y efectos.",
         json_desc: "Intercambio de datos.",
         hosting_desc: "Publicación en internet.",
-
-        // Footer
         footer_p: "Minuta Fresh · Proyecto escolar de desarrollo web"
     },
     en: {
-        // Navigation
         nav_inicio: "Home",
         nav_js: "JavaScript",
         nav_jquery: "jQuery",
@@ -131,8 +113,6 @@ const translations = {
         nav_hosting: "Hosting",
         nav_cuestionario: "Quiz",
         nav_contacto: "Contact",
-
-        // Hero
         eyebrow: "FLAVOR · FRESHNESS · TRADITION",
         hero_h2: "The flavor that refreshes your day.",
         hero_p1: "Minuta Fresh is a shaved ice proposal with fruit flavors, designed for youth and families looking for a refreshing, delicious, and affordable option.",
@@ -140,14 +120,10 @@ const translations = {
         hero_propuesta_txt: "offering different flavors, an attractive presentation, and accessible prices.",
         btn_ver_sabores: "View flavors",
         btn_contacto: "Contact us",
-
-        // Flavors Section
         sabores_small: "OUR FLAVORS",
         sabores_title: "Favorite Shaved Ices",
         sabores_subtitle: "Discover some of the Minuta Fresh options.",
         btn_elegir: "Choose",
-
-        // 9 Flavors
         fresa_title: "Strawberry",
         fresa_desc: "A refreshing combination with sweet strawberry flavor.",
         mango_title: "Mango",
@@ -166,8 +142,6 @@ const translations = {
         coco_desc: "Creamy beach coconut flavor, smooth and ideal for hot days.",
         arrayan_title: "Arrayán",
         arrayan_desc: "100% traditional flavor with the unique sweet-and-sour touch of arrayán.",
-
-        // Super Promo Section
         promo_small: "SUPER PROMO",
         promo_title: "Get More, Enjoy More!",
         promo_subtitle: "Buy four cup shaved ices and get one of our plate specialties for free.",
@@ -182,8 +156,6 @@ const translations = {
         promo_frutas_desc: "Delicious selection of fresh fruits to accompany your order.",
         promo_churro_title: "Lemon Shaved Ice with Churro",
         promo_churro_desc: "The unique traditional flavor with classic Salvadoran churritos.",
-
-        // Order Control
         resumen_titulo: "Your Order:",
         btn_ver_pedido: "View Order",
         modal_resumen_titulo: "Order Summary",
@@ -195,8 +167,6 @@ const translations = {
         modal_btn_aceptar: "Accept",
         msj_sin_items: "You haven't added shaved ices yet.",
         msj_falta_promo: "Notice! You ordered 4+ shaved ices. Don't forget to pick your free specialty in the Super Promo section.",
-
-        // Brand Palette
         identidad_small: "BRAND IDENTITY",
         identidad_title: "Our Palette",
         verde_title: "Olive Green",
@@ -205,23 +175,18 @@ const translations = {
         salvia_desc: "Provides calmness and freshness.",
         beige_title: "Beige",
         beige_desc: "Adds warmth and an artisanal style.",
-
-        // Research / Technologies
         investigacion_small: "RESEARCH",
         investigacion_title: "Technologies Used",
         js_desc: "Behavior and interaction.",
         jquery_desc: "Library and effects.",
         json_desc: "Data exchange.",
         hosting_desc: "Web publishing.",
-
-        // Footer
         footer_p: "Minuta Fresh · School Web Development Project"
     }
 };
 
 let currentLang = 'es';
 
-// Mapa de claves de productos
 const productKeyMap = {
     fresa: 'fresa_title',
     mango: 'mango_title',
@@ -237,28 +202,20 @@ const productKeyMap = {
     promo_churro: 'promo_churro_title'
 };
 
-// Función para cambiar cantidad de minutas
 function cambiarCantidad(producto, cambio) {
     if (pedido[producto] !== undefined) {
         pedido[producto] = Math.max(0, pedido[producto] + cambio);
-        
-        // Actualizar contador individual en la tarjeta
         const cantElement = document.getElementById(`cant-${producto}`);
-        if (cantElement) {
-            cantElement.innerText = pedido[producto];
-        }
-
+        if (cantElement) cantElement.innerText = pedido[producto];
         actualizarEstadoPedido();
     }
 }
 
-// Suma total de minutas de vaso
 function obtenerTotalVasos() {
     return pedido.fresa + pedido.mango + pedido.tamarindo + pedido.limon + 
            pedido.pina + pedido.chicle + pedido.uva + pedido.coco + pedido.arrayan;
 }
 
-// Calcular precio total acumulado
 function obtenerPrecioTotal() {
     let total = 0;
     for (let p in precios) {
@@ -267,10 +224,8 @@ function obtenerPrecioTotal() {
     return total;
 }
 
-// Seleccionar la especialidad de la Super Promo
 function seleccionarPromo(promoKey) {
     const totalVasos = obtenerTotalVasos();
-
     if (totalVasos < 4) {
         const faltantes = 4 - totalVasos;
         const msj = currentLang === 'es' 
@@ -279,48 +234,33 @@ function seleccionarPromo(promoKey) {
         alert(msj);
         return;
     }
-
-    // Seleccionar o deseleccionar si se vuelve a tocar
-    if (pedido.promo === promoKey) {
-        pedido.promo = null;
-    } else {
-        pedido.promo = promoKey;
-    }
-
+    pedido.promo = (pedido.promo === promoKey) ? null : promoKey;
     actualizarEstadoPedido();
 }
 
-// Actualizar la interfaz en tiempo real
 function actualizarEstadoPedido() {
     const totalVasos = obtenerTotalVasos();
     const precioTotal = obtenerPrecioTotal();
 
-    // Si baja de 4 vasos, remover regalo seleccionado
-    if (totalVasos < 4 && pedido.promo !== null) {
-        pedido.promo = null;
-    }
+    if (totalVasos < 4 && pedido.promo !== null) pedido.promo = null;
 
-    // 1. Actualizar barra flotante
     const floatingBar = document.getElementById('floatingOrderBar');
     const floatingText = document.getElementById('floatingOrderText');
     if (floatingBar && floatingText) {
         if (totalVasos > 0) {
             floatingBar.classList.remove('d-none');
             floatingBar.classList.add('d-flex');
-            const textoVasos = currentLang === 'es' 
+            floatingText.innerText = currentLang === 'es' 
                 ? `${totalVasos} minuta(s) | Total: $${precioTotal.toFixed(2)}`
                 : `${totalVasos} item(s) | Total: $${precioTotal.toFixed(2)}`;
-            floatingText.innerText = textoVasos;
         } else {
             floatingBar.classList.add('d-none');
             floatingBar.classList.remove('d-flex');
         }
     }
 
-    // 2. Actualizar indicador y botones de la Super Promo
     const badgeStatus = document.getElementById('promoBadgeStatus');
     const badgeText = document.getElementById('promoBadgeText');
-    
     if (badgeStatus && badgeText) {
         if (totalVasos >= 4) {
             badgeStatus.classList.remove('alert-info');
@@ -333,7 +273,6 @@ function actualizarEstadoPedido() {
         }
     }
 
-    // Actualizar botones de promo
     ['promo_limon', 'promo_frutas', 'promo_churro'].forEach(pKey => {
         const btn = document.getElementById(`btn-${pKey}`);
         const card = document.getElementById(`card-${pKey}`);
@@ -353,7 +292,6 @@ function actualizarEstadoPedido() {
     });
 }
 
-// Abrir Modal de Pedido para revisar resumen
 function abrirModalPedido() {
     const lista = document.getElementById('listaPedidoModal');
     const totalPagar = document.getElementById('totalPagarModal');
@@ -368,37 +306,29 @@ function abrirModalPedido() {
     if (totalVasos === 0) {
         lista.innerHTML = `<li class="list-group-item text-center text-muted">${translations[currentLang]['msj_sin_items']}</li>`;
     } else {
-        // Recorrer minutas de vaso
         for (let key in precios) {
             if (pedido[key] > 0) {
                 const nombre = translations[currentLang][productKeyMap[key]];
                 const subtotal = (pedido[key] * precios[key]).toFixed(2);
                 lista.innerHTML += `
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <strong>${nombre}</strong> x ${pedido[key]}
-                        </div>
+                        <div><strong>${nombre}</strong> x ${pedido[key]}</div>
                         <span>$${subtotal}</span>
                     </li>
                 `;
             }
         }
-
-        // Mostrar especialidad de Promo si fue seleccionada
         if (pedido.promo) {
             const nombrePromo = translations[currentLang][productKeyMap[pedido.promo]];
             lista.innerHTML += `
                 <li class="list-group-item d-flex justify-content-between align-items-center bg-light-success text-success fw-bold">
-                    <div>
-                        <i class="fa-solid fa-gift me-2"></i> ${nombrePromo} (Super Promo)
-                    </div>
+                    <div><i class="fa-solid fa-gift me-2"></i> ${nombrePromo} (Super Promo)</div>
                     <span class="badge bg-success">${translations[currentLang]['precio_promo']}</span>
                 </li>
             `;
         }
     }
 
-    // Alerta de aviso si compró 4 vasos pero aún no ha elegido la promo
     if (promoAlert) {
         if (totalVasos >= 4 && !pedido.promo) {
             promoAlert.innerText = translations[currentLang]['msj_falta_promo'];
@@ -410,15 +340,12 @@ function abrirModalPedido() {
 
     totalPagar.innerText = `$${precioTotal.toFixed(2)}`;
 
-    // Abrir Modal
     const modalElement = document.getElementById('pedidoModal');
     if (modalElement && typeof bootstrap !== 'undefined') {
-        const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-        modalInstance.show();
+        bootstrap.Modal.getOrCreateInstance(modalElement).show();
     }
 }
 
-// Confirmar pedido final desde el modal
 function confirmarPedidoFinal() {
     const totalVasos = obtenerTotalVasos();
     if (totalVasos === 0) {
@@ -426,14 +353,12 @@ function confirmarPedidoFinal() {
         return;
     }
 
-    // Ocultar modal de pedido
     const pedidoModalEl = document.getElementById('pedidoModal');
     if (pedidoModalEl && typeof bootstrap !== 'undefined') {
-        const modalInstance = bootstrap.Modal.getInstance(pedidoModalEl);
-        if (modalInstance) modalInstance.hide();
+        const instance = bootstrap.Modal.getInstance(pedidoModalEl);
+        if (instance) instance.hide();
     }
 
-    // Mensaje de detalle final
     const precioTotal = obtenerPrecioTotal().toFixed(2);
     let msj = currentLang === 'es'
         ? `Has pedido ${totalVasos} minuta(s) por un total de $${precioTotal}.`
@@ -447,18 +372,13 @@ function confirmarPedidoFinal() {
     }
 
     const exitoMensajeDetalle = document.getElementById('exitoMensajeDetalle');
-    if (exitoMensajeDetalle) {
-        exitoMensajeDetalle.innerText = msj;
-    }
+    if (exitoMensajeDetalle) exitoMensajeDetalle.innerText = msj;
 
-    // Abrir modal de éxito
     const exitoModalEl = document.getElementById('exitoModal');
     if (exitoModalEl && typeof bootstrap !== 'undefined') {
-        const exitoModalInstance = bootstrap.Modal.getOrCreateInstance(exitoModalEl);
-        exitoModalInstance.show();
+        bootstrap.Modal.getOrCreateInstance(exitoModalEl).show();
     }
 
-    // Reiniciar pedido
     for (let k in pedido) {
         if (k === 'promo') pedido[k] = null;
         else {
@@ -470,17 +390,12 @@ function confirmarPedidoFinal() {
     actualizarEstadoPedido();
 }
 
-// Cambiar idioma dinámicamente
 function toggleLanguage() {
     currentLang = currentLang === 'es' ? 'en' : 'es';
-    
     const langText = document.getElementById('langText');
-    if (langText) {
-        langText.innerText = currentLang === 'es' ? 'English' : 'Español';
-    }
+    if (langText) langText.innerText = currentLang === 'es' ? 'English' : 'Español';
 
-    const elementsToTranslate = document.querySelectorAll('[data-i18n]');
-    elementsToTranslate.forEach(element => {
+    document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[currentLang][key]) {
             element.innerText = translations[currentLang][key];
@@ -490,31 +405,60 @@ function toggleLanguage() {
     actualizarEstadoPedido();
 }
 
-// Inicialización de eventos al cargar la página
+// Eventos principales al cargar el documento
 document.addEventListener('DOMContentLoaded', () => {
-    // Evento selector de idioma
+    // 1. Botón de Idioma
     const langBtn = document.getElementById('langToggle');
-    if (langBtn) {
-        langBtn.addEventListener('click', toggleLanguage);
+    if (langBtn) langBtn.addEventListener('click', toggleLanguage);
+
+    // 2. Botón y Funcionalidad de MODO OSCURO
+    const darkToggleBtn = document.getElementById('darkModeToggle') || 
+                          document.getElementById('themeToggle') || 
+                          document.querySelector('.navbar .fa-moon')?.parentElement;
+
+    if (darkToggleBtn) {
+        darkToggleBtn.addEventListener('click', () => {
+            const isDark = document.body.classList.toggle('dark-mode');
+            
+            // Compatibilidad con atributo de Bootstrap si aplica
+            if (isDark) {
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-bs-theme', 'light');
+            }
+
+            // Cambiar icono entre Luna y Sol
+            const icon = darkToggleBtn.querySelector('i');
+            if (icon) {
+                if (isDark) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            }
+        });
     }
 
-    // Reproductor de música de fondo
+    // 3. Reproductor de Música de Fondo
     const musicBtn = document.getElementById('musicToggle');
     const bgMusic = document.getElementById('bgMusic');
 
     if (musicBtn && bgMusic) {
+        // Asegurar volumen suficiente
+        bgMusic.volume = 0.8;
+
         musicBtn.addEventListener('click', () => {
             if (bgMusic.paused) {
-                bgMusic.play()
-                    .then(() => {
-                        musicBtn.classList.add('playing');
-                    })
-                    .catch(error => {
-                        console.log('Error al reproducir audio:', error);
-                    });
+                bgMusic.play().then(() => {
+                    musicBtn.classList.add('playing', 'btn-success');
+                }).catch(err => {
+                    console.log('Error al reproductor:', err);
+                });
             } else {
                 bgMusic.pause();
-                musicBtn.classList.remove('playing');
+                musicBtn.classList.remove('playing', 'btn-success');
             }
         });
     }
