@@ -593,7 +593,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 } catch (error) {
                     actualizarBotonMusica(false);
                     alert(
-                        "No se pudo reproducir la música. Verifica que exista el archivo audio/musica.mp3."
+                        "No se pudo reproducir la música. Verifica que exista el archivo audio/musica.mp3"
                     );
                 }
             } else {
