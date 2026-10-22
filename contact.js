@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
         });
     }
 
-    const webhookURL = process.env.https:"https://discord.com/api/webhooks/1559306014350639166/bVWfEfbVqKqxBfaR00nqjlR61NBL2vuedqnwDMvhys9oNVP2eGGMVxn6zswjI2HpVDa-"
+const webhookURL = "https://discord.com/api/webhooks/1562811350768681052/siBFFclWHrurqiNqgkH5Dzw5peG0QhPN-TDP_0K1f7SgMrtuQr00YSfZc_xe5TRxwFPi";
 
     if (!webhookURL) {
         return res.status(500).json({
